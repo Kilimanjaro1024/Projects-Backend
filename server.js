@@ -6,7 +6,7 @@ const logger = require("morgan")
 const cors = require("cors")
 const corsOptions = require("./configs/cors.js")
 
-
+const projectRouter = require("./controllers/projectsController.js")
 
 app.use(express.urlencoded({extended:false}))
 app.use(cors())
@@ -19,6 +19,8 @@ app.get("/", (req,res) => {
         message: "My Projects"
     })
 })
+
+app.use('/projects', projectRouter)
 
 app.listen(PORT, () => {
     console.log(`Express server listening on port ${PORT}`)
